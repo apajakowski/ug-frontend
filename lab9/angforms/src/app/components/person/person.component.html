@@ -1,0 +1,22 @@
+<!--
+//[] przekazujemy dane wejscie  
+//() zdarzenia wyjscie 
+smoke testy dodac drobne rzeczy i sprawdzic czy dziala 
+-->
+<form [formGroup]="myForm" (ngSubmit)="mySubmit(myForm.value)">
+	<input type="text" [formControl]="myForm.controls['imie']">
+	<input type="text" [formControl]="myForm.controls['rokUr']">
+	<button type="submit">OK</button>
+</form>  
+
+<div *ngIf="imie.hasError('required')">imie wymagane</div>
+<div *ngIf="imie.hasError('minLength')">imie musi miec 3 litery</div>
+<div *ngIf="imie.hasError('bolekValue')">bolek denied</div>
+
+<div *ngIf="rokUr.hasError('min')">za stary</div>
+
+<ul>
+	<li></li>
+</ul>
+
+

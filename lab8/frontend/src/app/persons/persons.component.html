@@ -1,0 +1,11 @@
+<ul>
+<li *ngFor="let person of persons" (click)="selectPerson(person)">
+	{{person.name}}
+</li>
+</ul>
+
+<app-person-details *ngIf="selectedPerson" [personToShow]="selectedPerson" (detailsChanged)="">
+</app-person-details>
+
+<app-person-search>
+</app-person-search>
