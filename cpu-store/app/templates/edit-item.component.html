@@ -1,0 +1,145 @@
+<h3>{{$ctrl.title}}</h3>
+<hr/>
+
+<div class="text-right" ng-if="$ctrl.model.id">
+    <button class="btn btn-danger" ng-click="$ctrl.delete()">delete</button>
+</div>
+
+<div class="alert alert-danger" role="alert" ng-show="$ctrl.saveError">
+    {{$ctrl.saveError}}
+</div>
+
+<div class="alert alert-success" role="alert" ng-show="$ctrl.saveSuccess">
+    {{$ctrl.saveSuccess}}
+</div>
+
+<!--
+    formularz edycji/dodawania;
+    - dla każdego pola ustawiamy warunki poprawności ('required', 'min', 'max')
+    - w dyrektywie 'ng-class' ustawiamy klasę 'is-invalid', która wyświetla nam czerwoną ramkę wokół inputu, gdy warunek poprawności nie jest spełniony
+-->
+<form id="edit-item-form" name="$ctrl.form" ng-submit="$ctrl.save()" novalidate>
+    <div class="form-group row" >
+        <label class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" 
+                class="form-control" 
+                name="name" 
+                required 
+                maxlength="25"
+                ng-model="$ctrl.model.name" 
+                ng-class="{'is-invalid':($ctrl.form.name.$touched || $ctrl.form.$submitted) && $ctrl.form.name.$invalid}"/>
+            <small class="error" ng-show="($ctrl.form.name.$touched || $ctrl.form.$submitted) && $ctrl.form.name.$invalid">
+                Name is required (max 25 character)
+            </small>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Manufacturer</label>
+        <div class="col-sm-10">
+            <select class="form-control" 
+                required 
+                name="manufacturer"
+                ng-model="$ctrl.model.manufacturer" 
+                ng-options="item for item in $ctrl.manufacturers"
+                ng-class="{'is-invalid':($ctrl.form.manufacturer.$touched || $ctrl.form.$submitted) && $ctrl.form.manufacturer.$invalid}">
+            </select>
+            <small class="error" ng-show="($ctrl.form.manufacturer.$touched || $ctrl.form.$submitted) && $ctrl.form.manufacturer.$invalid">
+                Manufacturer is required
+            </small>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Cores</label>
+        <div class="col-sm-10">
+            <input type="number" 
+                class="form-control" 
+                name="cores"
+                required
+                min="1"
+                max="18"
+                ng-model="$ctrl.model.cores"
+                ng-class="{'is-invalid':($ctrl.form.cores.$touched || $ctrl.form.$submitted) && $ctrl.form.cores.$invalid}"/>
+            <small class="error" ng-show="($ctrl.form.cores.$touched || $ctrl.form.$submitted) && $ctrl.form.cores.$invalid">
+                Enter valid number of cores (1 - 18)
+            </small>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Clock rate</label>
+        <div class="col-sm-10">
+            <input type="number" 
+                class="form-control" 
+                name="clockRate"
+                required
+                min="1"
+                max="4500"
+                ng-model="$ctrl.model.clockRate"
+                ng-class="{'is-invalid':($ctrl.form.clockRate.$touched || $ctrl.form.$submitted) && $ctrl.form.clockRate.$invalid}"/>
+            <small class="error" ng-show="($ctrl.form.clockRate.$touched || $ctrl.form.$submitted) && $ctrl.form.clockRate.$invalid">
+                Enter valid clock rate (1 - 4500)
+            </small>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">GPU model</label>
+        <div class="col-sm-10">
+            <input type="text" 
+                class="form-control" 
+                name="gpuModel"
+                maxlength="25"
+                ng-required="$ctrl.model.gpuRate"
+                ng-model="$ctrl.model.gpuModel"
+                ng-class="{'is-invalid':($ctrl.form.gpuModel.$touched || $ctrl.form.$submitted) && $ctrl.form.gpuModel.$invalid}"/>
+            <small class="error" ng-show="($ctrl.form.gpuModel.$touched || $ctrl.form.$submitted) && $ctrl.form.gpuModel.$invalid">
+                GPU model is requried (max 25 characters)
+            </small>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">GPU clock rate</label>
+        <div class="col-sm-10">
+            <input type="number" 
+                class="form-control" 
+                name="gpuRate"
+                ng-required="$ctrl.model.gpuModel"
+                min="1"
+                max="1500"
+                ng-model="$ctrl.model.gpuRate"
+                ng-class="{'is-invalid':($ctrl.form.gpuRate.$touched || $ctrl.form.$submitted) && $ctrl.form.gpuRate.$invalid}"/>
+            <small class="error" ng-show="($ctrl.form.gpuRate.$touched || $ctrl.form.$submitted) && $ctrl.form.gpuRate.$invalid">
+                Enter valid GPU clock rate (1 - 1500)
+            </small>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Price</label>
+        <div class="col-sm-10">
+            <input type="number" 
+                class="form-control" 
+                name="price"
+                required
+                min="1"
+                max="15000"
+                ng-model="$ctrl.model.price"
+                ng-class="{'is-invalid':($ctrl.form.price.$touched || $ctrl.form.$submitted) && $ctrl.form.price.$invalid}"/>
+            <small class="error" ng-show="($ctrl.form.price.$touched || $ctrl.form.$submitted) && $ctrl.form.price.$invalid">
+                Price must be greater than 0 and less than 15000
+            </small>
+        </div>
+    </div>
+
+    <div class="form-group row" ng-show="$ctrl.form.$dirty">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-default" ng-click="$ctrl.cancel()">Cancel</button>
+    </div>
+</form>
+
+<hr/>
+<a href="/">go back</a>

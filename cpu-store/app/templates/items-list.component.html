@@ -1,0 +1,19 @@
+<p ng-if="$ctrl.items.length <= 0">no items</p>
+
+<div ng-repeat="item in $ctrl.items" class="col-4 col-md-3 item-card">
+    <div class="card" ng-click="$ctrl.navigateTo(item)">
+        <div class="card-header">
+            {{item.name}}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{item.manufacturer}}</h5>
+            <p class="card-text">cores: {{item.cores}}</p>
+            <p class="card-text">clock rate: {{item.clockRate}}MHz</p>
+            <p class="card-text">gpu model: {{item.gpuModel}}</p>
+            <p class="card-text">gpu rate: {{item.gpuRate}}MHz</p>
+        </div>
+        <div class="card-footer text-muted">
+            ${{item.price}}
+        </div>
+    </div>
+</div>

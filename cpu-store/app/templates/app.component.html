@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-2 col-md-2">
+        <!--
+            komponent wyszukiwania
+            - on-search - tutaj dodajemy funkcję callback która będzie wywoływana gdy filtr się zmieni
+        -->
+        <search-component on-search="$ctrl.onSearch"></search-component>
+    </div>
+    <div class="col-10 col-md-10">
+        <!--
+            komponent z listą produktów
+            - items - lista produktów do wyświetlenia
+        -->
+        <items-list-component items="$ctrl.items"></items-list-component>
+    </div>
+</div>

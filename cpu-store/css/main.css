@@ -1,0 +1,61 @@
+.item-card {
+    float: left;
+    padding: 10px;
+}
+
+.item-card .card {
+    box-shadow: 0 5px 10px -5px rgb(156, 156, 156);
+}
+
+.item-card:hover .card{
+    cursor: pointer;
+    border: 1px solid #00acac;
+}
+
+#edit-item-form {
+    padding-top: 15px;
+}
+
+#edit-item-form input,
+#edit-item-form select {
+    max-width: 300px;
+}
+
+#edit-item-form button {
+    margin: 5px;
+}
+
+#edit-item-form .error {
+    color: red;
+}
+
+app-component {
+    display: block;
+    padding-bottom: 100px;
+    margin-top: 15px;
+}
+
+edit-item-component {
+    margin-top: 15px;
+    display: block;
+}
+
+search-component li {
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+search-component li:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+search-component a {
+    color: grey;
+    text-decoration: none;
+}
+
+search-component a:hover {
+    text-decoration: none;
+    color: grey;
+}
