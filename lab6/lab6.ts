@@ -1,5 +1,12 @@
 class Cpu {
 
+    manufacturer: string;
+    numCores: number;
+    clockRate: number;
+    gpuModel: string;
+    gpuRate: number;
+    price: number;
+
     constructor(){
         this.manufacturer = '';
         this.numCores = 0;
@@ -47,17 +54,19 @@ class Cpu {
     }
 }
     
-var cpu  = new Cpu();
+let cpu  = new Cpu();
 cpu.setManufacturer('intel');
 
-    
 class QuantumCpu extends Cpu {
+
+    isQuantum: boolean;
+
     constructor(){
         super();
         this.isQuantum = true;
     }
 
-    isQuantum(){
+    getIsQuantum(){
         return this.isQuantum;
     }
 
@@ -65,7 +74,7 @@ class QuantumCpu extends Cpu {
         return super.getPrice() * 2;
     }
 }
-    
-var quantum = new QuantumCpu();
+
+let quantum = new QuantumCpu();
 quantum.setPrice(5);
 console.log(quantum.getPrice());

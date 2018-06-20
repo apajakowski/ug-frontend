@@ -1,6 +1,22 @@
-var Math = require('./zadanie1')(); // Przypisanie modu³u do zmiennej math
-Math.calculateFieldOfCircle = function (r) { // Modul math zostaje rozszerzony o funkcje obliczajaca pole kola
-	return Math.pi * (r*r);
-};
+var Cpu = require('./lab2.js');
 
-module.exports = Math; // Eksport rozszerzonego modulu
+var superCpu = Object.create(new Cpu(), {
+    isSuperCpu: {
+        value: function() {
+            return true;
+        }
+    },
+    getPrice: {
+        value: function() {
+            var basePrice = Object.getPrototypeOf(this).getPrice.call(this);
+            return basePrice * 2;
+        }
+    }
+});
+
+superCpu.setManufacurer("Intel");
+superCpu.setPrice(100);
+
+console.log(superCpu.getManufacturer());
+console.log(superCpu.isSuperCpu());
+console.log(superCpu.getPrice());
